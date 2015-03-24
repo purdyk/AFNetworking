@@ -59,6 +59,8 @@
  */
 - (void)setRefreshingWithStateOfOperation:(AFURLConnectionOperation *)operation;
 
+- (void)unregister;
+
 @end
 
 #endif
