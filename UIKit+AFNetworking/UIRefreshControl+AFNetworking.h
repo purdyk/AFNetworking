@@ -61,6 +61,8 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)setRefreshingWithStateOfOperation:(AFURLConnectionOperation *)operation;
 
+- (void)unregister;
+
 @end
 
 NS_ASSUME_NONNULL_END
