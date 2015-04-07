@@ -82,6 +82,10 @@
  */
 - (void)setProgressWithDownloadProgressOfOperation:(AFURLConnectionOperation *)operation
                                           animated:(BOOL)animated;
+/**
+* Prematurely removes any observers on the task
+*/
+- (void)removeObserversForTask:(NSURLSessionTask *)task;
 
 @end
 
