@@ -72,6 +72,7 @@ static void * AFTaskCountOfBytesReceivedContext = &AFTaskCountOfBytesReceivedCon
 
 #pragma mark -
 
+
 #if __IPHONE_OS_VERSION_MIN_REQUIRED >= 70000
 - (void)setProgressWithUploadProgressOfTask:(NSURLSessionUploadTask *)task
                                    animated:(BOOL)animated
@@ -176,6 +177,18 @@ static void * AFTaskCountOfBytesReceivedContext = &AFTaskCountOfBytesReceivedCon
     }
 #endif
 }
+
+
+- (void)removeObserversForTask:(NSURLSessionTask *)task {
+
+    @try {
+        [task removeObserver:self forKeyPath:NSStringFromSelector(@selector(state))];
+        [task removeObserver:self forKeyPath:NSStringFromSelector(@selector(countOfBytesSent))];
+        [task removeObserver:self forKeyPath:NSStringFromSelector(@selector(countOfBytesReceived))];
+    }
+    @catch (NSException * __unused exception) {}
+}
+
 
 @end
 
