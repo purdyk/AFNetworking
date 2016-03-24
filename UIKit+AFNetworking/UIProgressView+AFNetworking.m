@@ -117,22 +117,15 @@ static void * AFTaskCountOfBytesReceivedContext = &AFTaskCountOfBytesReceivedCon
 
     @try {
         [task removeObserver:self forKeyPath:NSStringFromSelector(@selector(state))];
-    }
-    @catch (NSException * __unused exception) {}
+    } @catch (NSException * __unused exception) {}
 
-    if ([task class] == [NSURLSessionUploadTask class]) {
-        @try {
+    @try {
             [task removeObserver:self forKeyPath:NSStringFromSelector(@selector(countOfBytesSent))];
-        }
-        @catch (NSException *__unused exception) {}
-    }
+    } @catch (NSException *__unused exception) {}
 
-    if ([task class] == [NSURLSessionDownloadTask class]) {
-        @try {
-            [task removeObserver:self forKeyPath:NSStringFromSelector(@selector(countOfBytesReceived))];
-        }
-        @catch (NSException *__unused exception) {}
-    }
+    @try {
+        [task removeObserver:self forKeyPath:NSStringFromSelector(@selector(countOfBytesReceived))];
+    } @catch (NSException *__unused exception) {}
 }
 
 @end
